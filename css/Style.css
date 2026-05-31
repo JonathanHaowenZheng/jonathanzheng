@@ -369,3 +369,164 @@ body {
     opacity: 1;
     transform: translateX(2px) translateY(-2px);
 }
+
+/* ========================================= */
+/* ====== ABOUT 页面专属样式           ====== */
+/* ========================================= */
+
+.about-section {
+    padding: 4rem 5% 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.about-header h2 {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    color: var(--text-main);
+    letter-spacing: 1px;
+}
+
+/* 杂志双栏排版 */
+.bio-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* 左侧照片稍窄，右侧文字稍宽 */
+    gap: 5rem;
+    align-items: start; /* 确保左右顶部对齐 */
+}
+
+/* 让照片在向下滚动时悬停 (Sticky) */
+.bio-image-col {
+    position: sticky;
+    top: 120px; 
+}
+
+.bio-portrait {
+    width: 100%;
+    border-radius: 4px;
+    filter: grayscale(20%); /* 稍微降低一点饱和度，更有高级感 */
+    transition: filter 0.5s ease;
+}
+
+.bio-portrait:hover {
+    filter: grayscale(0%);
+}
+
+.bio-text-col p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 1.8rem;
+    text-align: justify; /* 两端对齐，像书本排版一样严谨 */
+}
+
+/* 第一段首字母下沉效果 (Drop Cap) */
+.bio-text-col p:first-of-type::first-letter {
+    float: left;
+    font-family: var(--font-serif);
+    font-size: 4.5rem;
+    line-height: 0.8;
+    color: var(--gold-accent);
+    padding-right: 12px;
+    padding-top: 8px;
+    font-weight: 700;
+}
+
+/* 优雅的分割线 */
+.elegant-divider {
+    border: 0;
+    height: 1px;
+    background: var(--nav-border);
+    margin: 5rem 0;
+}
+
+/* 底部履历与下载区域 */
+.creds-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+}
+
+.creds-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--gold-accent);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--nav-border);
+}
+
+/* 极简编年史样式 */
+.timeline-item {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.timeline-year {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--gold-accent);
+    min-width: 100px;
+    font-weight: 600;
+}
+
+.timeline-content h4 {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin-bottom: 0.3rem;
+}
+
+.timeline-content p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.timeline-sub {
+    font-size: 0.85rem !important;
+    font-style: italic;
+    margin-top: 0.3rem;
+    opacity: 0.8;
+}
+
+/* CV 下载区 */
+.cv-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.cv-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.cv-download {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 响应式：屏幕变小后变为单列 */
+@media (max-width: 968px) {
+    .bio-container, .creds-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .bio-image-col {
+        position: relative;
+        top: 0;
+    }
+    .timeline-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

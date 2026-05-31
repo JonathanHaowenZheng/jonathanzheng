@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Jonathan Zheng</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else {
+                const hour = new Date().getHours();
+                if (hour >= 6 && hour < 18) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">JZ.</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="event.html">Event</a></li>
+            <li><a href="videos.html">Portfolio</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="#" class="future-link">Research (Soon)</a></li>
+            <li>
+                <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="about-section">
+        
+        <div class="about-header">
+            <span class="eyebrow">Philosophy</span>
+            <h2>The Pianist. The Researcher.</h2>
+        </div>
+
+        <div class="bio-container">
+            <div class="bio-image-col">
+                <img src="assets/images/profile.jpg" alt="Jonathan Zheng Portrait" class="bio-portrait">
+            </div>
+            
+            <div class="bio-text-col">
+                <p>
+                    [此处开始你的 Pianist 叙事] Music has never been merely a sequence of notes to me; it is an architectural structure built in time. From the earliest moments of my piano studies, I was captivated not just by the emotional resonance of the repertoire, but by the profound logic underlying it...
+                </p>
+                <p>
+                    My time at the Tianjin Juilliard Pre-College shaped my understanding of the stage. Every performance is a delicate balance of vulnerability and precision. Whether I am navigating the complex counterpoint of Bach or the expansive narratives of Chopin, my goal is to reveal the hidden geometries of the composer's mind.
+                </p>
+                <p>
+                    [此处自然过渡到 Researcher] But the questions I asked at the keyboard inevitably led me away from it. Why does a specific harmonic progression evoke a universal human response? Can the intuition of phrasing be quantified? This pursuit brought me to Denison University, where I study Applied Mathematics alongside Musical Arts.
+                </p>
+                <p>
+                    As a researcher, I am deeply invested in the intersection of Machine Learning and Music Information Retrieval (MIR). I view mathematical theorems and algorithms not as cold tools, but as a different language for understanding the same beauty I experience on stage. To me, the piano and the code editor are two instruments playing the same symphony.
+                </p>
+            </div>
+        </div>
+
+        <hr class="elegant-divider">
+
+        <div class="creds-container">
+            <div class="timeline-col">
+                <h3 class="creds-title">Academic Background</h3>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2025 — 2029</div>
+                    <div class="timeline-content">
+                        <h4>Denison University</h4>
+                        <p>B.S. in Applied Mathematics / B.A. in Music Performance</p>
+                        <p class="timeline-sub">Minors in Machine Learning & AI.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2022 — 2025</div>
+                    <div class="timeline-content">
+                        <h4>Tianjin Juilliard School</h4>
+                        <p>Music Development Program (Pre-College)</p>
+                        <p class="timeline-sub">Studied under Dr. Alvin Zhu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cv-col">
+                <h3 class="creds-title">Curriculum Vitae</h3>
+                <p class="cv-desc">A comprehensive overview of my repertoire, academic projects, performances, and honors.</p>
+                <a href="assets/docs/Jonathan_Zheng_CV.pdf" class="cta-button cv-download" download="Jonathan_Zheng_CV.pdf">
+                    <i class="fa-solid fa-file-arrow-down"></i> Download PDF
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('themeToggle');
+            const icon = toggleBtn.querySelector('i');
+            
+            function updateIcon() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                if (currentTheme === 'light') {
+                    icon.className = 'fa-solid fa-sun';
+                } else {
+                    icon.className = 'fa-solid fa-moon';
+                }
+            }
+            updateIcon();
+
+            toggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                let newTheme = 'dark';
+                if (currentTheme === 'dark' || !currentTheme) {
+                    newTheme = 'light';
+                }
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateIcon();
+            });
+        });
+    </script>
+</body>
+</html>
+    
