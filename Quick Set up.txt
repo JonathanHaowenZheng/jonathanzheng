@@ -1,0 +1,24 @@
+This is the event update block:
+<div class="event-row" data-category="music"> <div class="event-date">
+        <span class="month">OCT</span>
+        <span class="day">24</span>
+    </div>
+    <div class="event-info">
+        <span class="event-tag"><i class="fa-solid fa-music"></i> Performance</span> <h4 class="event-title">Junior Solo Recital: Echoes of Chopin</h4>
+        <p class="event-location">Burke Recital Hall, Denison University</p>
+    </div>
+    <div class="event-action">
+        <a href="#" class="cta-button outline">RSVP</a>
+    </div>
+</div>
+
+This is for the video update block:
+<div class="video-card">
+    <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/abcdefg" title="Performance Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="card-video-info">
+        <h4 class="piece-title-sm">曲目作曲家: 曲目详细名字, 作品号</h4>
+        <p class="performance-meta"><i class="fa-solid fa-location-dot"></i> 演出地点 · 机构/大学名称</p>
+    </div>
+</div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Jonathan Zheng</title>
+    <title>Portfolio | Jonathan Zheng</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -41,3 +41,78 @@
             </li>
         </ul>
     </nav>
+
+    <main class="performance-section">
+        <div class="section-header">
+            <span class="eyebrow">Repertoire & Stage</span>
+            <h2>Selected Portfolio</h2>
+        </div>
+
+        <div class="performance-grid">
+            
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Performance 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-video-info">
+                    <h4 class="piece-title-sm">Chopin: Ballade No. 1 in G minor, Op. 23</h4>
+                    <p class="performance-meta"><i class="fa-solid fa-location-dot"></i> Burke Recital Hall · Denison University</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Performance 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-video-info">
+                    <h4 class="piece-title-sm">Bach: Prelude and Fugue in C minor, WTC I</h4>
+                    <p class="performance-meta"><i class="fa-solid fa-calendar-days"></i> Juilliard Pre-College Showcase</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Performance 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-video-info">
+                    <h4 class="piece-title-sm">Beethoven: Sonata No. 21 "Waldstein"</h4>
+                    <p class="performance-meta"><i class="fa-solid fa-location-dot"></i> Tianjin Juilliard Concert Hall</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Performance 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-video-info">
+                    <h4 class="piece-title-sm">Liszt: Transcendental Étude No. 4 "Mazeppa"</h4>
+                    <p class="performance-meta"><i class="fa-solid fa-location-dot"></i> Studio Recording</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('themeToggle');
+            const icon = toggleBtn.querySelector('i');
+            
+            function updateIcon() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                if (currentTheme === 'light') { icon.className = 'fa-solid fa-sun'; } 
+                else { icon.className = 'fa-solid fa-moon'; }
+            }
+            updateIcon();
+
+            toggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                let newTheme = currentTheme === 'dark' || !currentTheme ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateIcon();
+            });
+        });
+    </script>
+</body>
+</html>
