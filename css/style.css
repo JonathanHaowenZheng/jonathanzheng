@@ -795,3 +795,63 @@ body {
         gap: 3rem;
     }
 }
+
+/* ========================================= */
+/* ====== 📱 手机端终极适配 (Responsive) ====== */
+/* ========================================= */
+
+/* 当屏幕宽度小于 768px (通常是手机和平板竖屏) 时，自动触发以下规则 */
+@media (max-width: 768px) {
+    
+    /* 1. 导航栏重构：从左右两端对齐，变成居中折行 */
+    .navbar {
+        flex-direction: column;
+        padding: 1rem 5%;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    /* 2. 首页 (Home) 字体自适应缩放，防止文字超出屏幕 */
+    .hero-title {
+        font-size: 2.8rem; /* 缩小巨型标题 */
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    /* 3. About 页面：左右双列强制变成上下单列 */
+    .about-content, 
+    .about-container {
+        flex-direction: column; /* 让图片和文字上下排列 */
+        gap: 2rem;
+    }
+
+    .about-image {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .about-text {
+        padding-left: 0;
+        border-left: none;
+    }
+
+    /* 4. 全局留白调整：缩小手机端的边距，给内容留出更多空间 */
+    section, main {
+        padding: 2.5rem 5% 4rem;
+    }
+
+    /* 5. 确保所有图片、iframe 视频不会撑爆屏幕 */
+    img, iframe {
+        max-width: 100%;
+    }
+}
