@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | Jonathan Zheng</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else {
+                const hour = new Date().getHours();
+                if (hour >= 6 && hour < 18) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">JZ.</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="event.html" class="active">Event</a></li>
+            <li><a href="videos.html">Portfolio</a></li>
+            <li><a href="#" class="future-link">Research (Soon)</a></li>
+            <li>
+                <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="events-section">
+        
+        <div class="section-header">
+            <span class="eyebrow">Agenda</span>
+            <h2>Performances & Symposiums</h2>
+        </div>
+
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">All Events</button>
+            <button class="filter-btn" data-filter="music"><i class="fa-solid fa-music"></i> Music</button>
+            <button class="filter-btn" data-filter="academic"><i class="fa-solid fa-square-root-variable"></i> Academic</button>
+        </div>
+
+        <div class="events-group">
+            <h3 class="group-title">Upcoming</h3>
+            <div class="events-list" id="upcoming-list">
+                
+                <div class="event-row" data-category="music">
+                    <div class="event-date">
+                        <span class="month">Aug</span>
+                        <span class="day">1-14</span>
+                    </div>
+                    <div class="event-info">
+                        <span class="event-tag music-tag"><i class="fa-solid fa-music"></i> Performance</span>
+                        <h4 class="event-title">Music&More SummerFest</h4>
+                        <p class="event-location">Trebinje</p>
+                    </div>
+                    <div class="event-action">
+                        <a href="https://musicandmoresummerfest.com/" class="cta-button outline">Details</a>
+                    </div>
+                </div>
+
+                <!-- <div class="event-row" data-category="academic">
+                    <div class="event-date">
+                        <span class="month">DEC</span>
+                        <span class="day">02</span>
+                    </div>
+                    <div class="event-info">
+                        <span class="event-tag academic-tag"><i class="fa-solid fa-square-root-variable"></i> Academic</span>
+                        <h4 class="event-title">Data Science & Music Seminar: Algorithmic Phrasing</h4>
+                        <p class="event-location">Knapp Hall, Math Department</p>
+                    </div>
+                    <div class="event-action">
+                        <a href="#" class="cta-button outline">Details</a>
+                    </div>
+                </div> -->
+
+                </div>
+        </div>
+
+        <hr class="elegant-divider">
+
+        <div class="events-group">
+            <!-- <h3 class="group-title">Archive</h3> -->
+            <!-- <div class="events-list" id="archive-list">
+                
+                <div class="event-row" data-category="music">
+                    <div class="event-date">
+                        <span class="month">MAY</span>
+                        <span class="day">20</span>
+                        <span class="year">2024</span>
+                    </div>
+                    <div class="event-info">
+                        <span class="event-tag music-tag"><i class="fa-solid fa-music"></i> Performance</span>
+                        <h4 class="event-title">Pre-College Graduation Recital</h4>
+                        <p class="event-location">Tianjin Juilliard Concert Hall</p>
+                    </div>
+                    <div class="event-action">
+                        <a href="videos.html" class="cta-button outline">Watch</a>
+                    </div>
+                </div>
+
+            </div> -->
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 昼夜切换逻辑
+            const toggleBtn = document.getElementById('themeToggle');
+            const icon = toggleBtn.querySelector('i');
+            function updateIcon() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                if (currentTheme === 'light') { icon.className = 'fa-solid fa-sun'; } 
+                else { icon.className = 'fa-solid fa-moon'; }
+            }
+            updateIcon();
+            toggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                let newTheme = currentTheme === 'dark' || !currentTheme ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateIcon();
+            });
+
+            // 分类筛选逻辑 (Filter)
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const eventRows = document.querySelectorAll('.event-row');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // 1. 切换按钮高亮状态
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // 2. 获取当前点击的分类 (all, music, academic)
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    // 3. 遍历所有活动，匹配的显示，不匹配的隐藏
+                    eventRows.forEach(row => {
+                        if (filterValue === 'all' || row.getAttribute('data-category') === filterValue) {
+                            row.style.display = 'flex'; // 恢复显示
+                        } else {
+                            row.style.display = 'none'; // 隐藏
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

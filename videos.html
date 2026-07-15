@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Jonathan Zheng</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else {
+                const hour = new Date().getHours();
+                if (hour >= 6 && hour < 18) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">JZ.</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="event.html">Event</a></li>
+            <li><a href="videos.html" class="active">Portfolio</a></li>
+            <li><a href="#" class="future-link">Research (Soon)</a></li>
+            <li>
+                <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="performance-section">
+        <div class="section-header">
+            <span class="eyebrow">Repertoire & Stage</span>
+            <h2>Selected Portfolio</h2>
+        </div>
+
+        <div class="performance-grid">
+            
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/MBFADJT8mgk" title="Performance 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-video-info">
+                    <h4 class="piece-title-sm">Bach: French Suite No.5 in G, BWV 816, I. Allemande & VII. Gigue</h4>
+                    <p class="performance-meta"><i class="fa-solid fa-location-dot"></i> Burke Recital Hall · Denison University</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/-iCTID08k0w" title="Performance 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-video-info">
+                    <h4 class="piece-title-sm">Schumann: Papillons, No. 2</h4>
+                    <p class="performance-meta"><i class="fa-solid fa-calendar-days"></i> Tianjin Juilliard Rehersal Hall</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/AgPS570Det0" title="Performance 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-video-info">
+                    <h4 class="piece-title-sm">Bartok: Suite, Op 14, I Allegretto"</h4>
+                    <p class="performance-meta"><i class="fa-solid fa-location-dot"></i> Recording Studio</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/qEw9vaAS8rI" title="Performance 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-video-info">
+                    <h4 class="piece-title-sm">Beethoven: Sonata No.17 in D minor, Op. 31, No.2 1&2 Mvt</h4>
+                    <p class="performance-meta"><i class="fa-solid fa-location-dot"></i> Burke Recital Hall · Denison University</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="more-videos-container" style="text-align: center; margin-top: 4rem; margin-bottom: 2rem;">
+            <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem;">
+                Discover more performances, practice excerpts, and recordings on my channel.
+            </p>
+            <a href="https://www.youtube.com/@Jonathan_zhw" target="_blank" class="cta-button yt-channel-btn" style="display: inline-flex; align-items: center; gap: 10px; background: transparent; border: 1px solid var(--gold-accent); color: var(--gold-accent);">
+                <i class="fa-brands fa-youtube" style="font-size: 1.2rem;"></i> Watch More on YouTube
+            </a>
+        </div>
+        </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('themeToggle');
+            const icon = toggleBtn.querySelector('i');
+            
+            function updateIcon() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                if (currentTheme === 'light') { icon.className = 'fa-solid fa-sun'; } 
+                else { icon.className = 'fa-solid fa-moon'; }
+            }
+            updateIcon();
+
+            toggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                let newTheme = currentTheme === 'dark' || !currentTheme ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateIcon();
+            });
+        });
+    </script>
+</body>
+</html>

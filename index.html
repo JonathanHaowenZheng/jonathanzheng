@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonathan Zheng | Pianist & Researcher</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else {
+                const hour = new Date().getHours();
+                if (hour >= 6 && hour < 18) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">JZ.</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="event.html">Event</a></li>
+            <li><a href="videos.html">Portfolio</a></li>
+            <li><a href="#" class="future-link">Research (Soon)</a></li>
+            <li>
+                <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="hero-section">
+        <div class="hero-image">
+            <img src="assets/images/profile.jpeg" alt="Jonathan playing the piano">
+            <div class="image-overlay"></div>
+        </div>
+
+        <div class="hero-text">
+            <span class="eyebrow">Haowen Zheng</span>
+            <h1>Jonathan Zheng</h1>
+            <h2 class="dynamic-subtitle">I am a <span class="typing-text"></span><span class="cursor">&nbsp;</span></h2>
+            <p class="intro-description">
+                Hey, welcome to my website! I'll be sharing my latest updates and events here. Feel free to look around and explore!
+            </p>
+
+            <div class="action-group">
+                <a href="about.html" class="cta-button">Discover My World</a>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@Jonathan_zhw" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/scalar_zhw?igsh=MWM0amw1bXNoaHdoeA%3D%3D&utm_source=qr" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/haowen-zheng/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/JonathanHaowenZheng" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 1. 昼夜模式交互逻辑
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('themeToggle');
+            const icon = toggleBtn.querySelector('i');
+            
+            function updateIcon() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                if (currentTheme === 'light') {
+                    icon.className = 'fa-solid fa-sun'; // 白天显示太阳
+                } else {
+                    icon.className = 'fa-solid fa-moon'; // 晚上显示月亮
+                }
+            }
+            updateIcon();
+
+            toggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                let newTheme = 'dark';
+                if (currentTheme === 'dark' || !currentTheme) {
+                    newTheme = 'light';
+                }
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme); // 记住用户的强行手动修改
+                updateIcon();
+            });
+        });
+
+        // 2. 打字机效果
+        const words = ["Pianist.", "Math Student.", "Creative Coder."];
+        let i = 0; let timer;
+        function typingEffect() {
+            let word = words[i].split("");
+            var loopTyping = function() {
+                if (word.length > 0) { document.querySelector('.typing-text').innerHTML += word.shift(); } 
+                else { setTimeout(deletingEffect, 2000); return false; }
+                timer = setTimeout(loopTyping, 100);
+            };
+            loopTyping();
+        }
+        function deletingEffect() {
+            let word = words[i].split("");
+            var loopDeleting = function() {
+                if (word.length > 0) { word.pop(); document.querySelector('.typing-text').innerHTML = word.join(""); } 
+                else { if (words.length > (i + 1)) { i++; } else { i = 0; } typingEffect(); return false; }
+                timer = setTimeout(loopDeleting, 50);
+            };
+            loopDeleting();
+        }
+        typingEffect();
+    </script>
+</body>
+</html>

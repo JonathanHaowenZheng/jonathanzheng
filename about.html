@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Jonathan Zheng</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else {
+                const hour = new Date().getHours();
+                if (hour >= 6 && hour < 18) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">JZ.</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="event.html">Event</a></li>
+            <li><a href="videos.html">Portfolio</a></li>
+            <li><a href="#" class="future-link">Research (Soon)</a></li>
+            <li>
+                <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="about-section">
+        
+        <div class="about-header">
+            <span class="eyebrow">Philosophy</span>
+            <h2>The Pianist. The Researcher.</h2>
+        </div>
+
+        <div class="bio-container">
+            <div class="bio-image-col">
+                <img src="assets/images/profile.jpeg" alt="Jonathan Zheng Portrait" class="bio-portrait">
+            </div>
+            
+            <div class="bio-text-col">
+                <p>
+                    I'm currently an undergraduate at Denison University, double majoring in Applied Mathematics and Music (Piano Performance), with a minors in Machine Learning and Artificial Intelligence. I am passionate about refining my artistry at the piano while exploring the mathematical structures that underpin both music and technology.
+                </p>
+                <p>
+                    On the mathematics side, I'm fascinated by machine learning—especially how we can teach machines to interpret and generate sound in ways that feel authentically human. I'm currently developing a project in this area, and I look forward to sharing it soon.
+                </p>
+                <p>
+                    As a Music Major, I am currently studying under the guidance of 
+                    <a href="https://denison.edu/people/sun-min-kim" target="_blank" class="ext-link prof-link">Dr. Sun Min Kim</a> and 
+                    <a href="https://denison.edu/people/hana-chu" target="_blank" class="ext-link prof-link">Dr. Hana Chu</a>. 
+                    Prior to my time at Denison, I spent three years studying with 
+                    <a href="https://www.tianjinjuilliard.edu.cn/faculty/alvin-zhu" target="_blank" class="ext-link prof-link">Dr. Alvin Zhu</a>.
+                </p>
+                <p class="update-date" style="margin-top: 2rem; color: var(--text-muted); font-size: 0.85rem;">
+                    Updated June 2026
+                </p>
+            </div>
+        </div>
+
+        <hr class="elegant-divider">
+
+        <div class="creds-container">
+            <div class="timeline-col">
+                <h3 class="creds-title">Academic Background</h3>
+                <div class="timeline-item">
+                    <div class="timeline-year">2025 — 2029</div>
+                    <div class="timeline-content">
+                        <h4><a href="https://denison.edu/" target="_blank" class="ext-link">Denison University <i class="fa-solid fa-arrow-up-right-from-square tiny-icon"></i></a></h4>
+                        <p>B.S. in Applied Mathematics / B.A. in Music Performance</p>
+                        <p class="timeline-sub">Minor in Machine Learning & AI.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cv-contact-col" style="display: flex; flex-direction: column; gap: 3.5rem;">
+                
+                <div class="cv-block">
+                    <h3 class="creds-title">Curriculum Vitae</h3>
+                    <p class="cv-desc">A comprehensive overview of my repertoire, academic projects, performances, and honors.</p>
+                    <a href="assets/docs/Jonathan_Zheng_CV.pdf" target="_blank" class="cta-button cv-download">
+                        <i class="fa-regular fa-file-pdf"></i> View CV (PDF)
+                    </a>
+                </div>
+
+                <div class="contact-block">
+                    <h3 class="creds-title">Get in Touch</h3>
+                    <p class="cv-desc">For performances, academic inquiries, or collaborations.</p>
+                    <a href="mailto:zheng_h2@denison.edu" class="cta-button contact-email">
+                        <i class="fa-regular fa-envelope"></i> zheng_h2@denison.edu
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('themeToggle');
+            const icon = toggleBtn.querySelector('i');
+            
+            function updateIcon() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                if (currentTheme === 'light') {
+                    icon.className = 'fa-solid fa-sun';
+                } else {
+                    icon.className = 'fa-solid fa-moon';
+                }
+            }
+            updateIcon();
+
+            toggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                let newTheme = 'dark';
+                if (currentTheme === 'dark' || !currentTheme) {
+                    newTheme = 'light';
+                }
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateIcon();
+            });
+        });
+    </script>
+</body>
+</html>
