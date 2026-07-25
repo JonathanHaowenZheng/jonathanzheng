@@ -870,3 +870,80 @@ body {
     color: #e5c398 !important; /* 悬浮时变成更亮的金色 */
     border-bottom: 1px solid #e5c398 !important; /* 底部优雅的下划线跟着变亮 */
 }
+
+
+/* ========================================= */
+/* ====== 📱 手机端专属适配 (Max Width 768px) ====== */
+/* ========================================= */
+
+/* 默认在电脑端隐藏移动端专属照片 */
+.mobile-portrait {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /* 0. 隐藏电脑端原本可能错位的半屏大图 */
+    .hero-image {
+        display: none !important;
+    }
+    .hero-section {
+        flex-direction: column !important;
+        padding-top: 30px !important;
+    }
+
+    /* 📸 1. 手机专属肖像照：居中、圆形、带金边 */
+    .mobile-portrait {
+        display: block !important;
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 20px auto;
+        border: 2px solid #c5a880; /* 香槟金边框 */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 🧭 2. 导航栏适配：防止折行，允许横向微调滑动 */
+    .nav-links {
+        display: flex;
+        flex-wrap: nowrap !important;
+        gap: 15px !important;
+        overflow-x: auto;
+        padding-bottom: 5px;
+        justify-content: flex-start !important; 
+    }
+    .nav-links li a {
+        font-size: 13px !important;
+        white-space: nowrap; /* 强制文字不换行 */
+    }
+
+    /* ✍️ 3. 文字内容居中与大标题缩放 */
+    .hero-text {
+        text-align: center !important;
+        padding: 0 20px !important; 
+    }
+    .hero-text h1 {
+        font-size: 3rem !important; /* 缩小大标题，避免占满屏幕 */
+        line-height: 1.1 !important;
+    }
+    .intro-description {
+        text-align: center !important;
+    }
+    .dynamic-subtitle {
+        justify-content: center !important; /* 让打字机效果居中 */
+    }
+
+    /* 🔘 4. 按钮和社交图标：改横排为上下堆叠 */
+    .action-group {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 25px !important;
+        margin-top: 20px !important;
+    }
+    .social-links {
+        justify-content: center !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+}
