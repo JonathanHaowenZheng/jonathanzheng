@@ -903,18 +903,33 @@ body {
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
-    /* 🧭 2. 导航栏适配：防止折行，允许横向微调滑动 */
+    /* 🧭 2. 导航栏适配：高级横向滑动菜单 */
+    .navbar {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: 100% !important;
+    }
     .nav-links {
         display: flex;
         flex-wrap: nowrap !important;
-        gap: 15px !important;
-        overflow-x: auto;
-        padding-bottom: 5px;
-        justify-content: flex-start !important; 
+        justify-content: flex-start !important; /* 核心：强行从最左侧开始排 */
+        width: 100% !important; 
+        overflow-x: auto !important; /* 核心：允许手指横向滑动 */
+        padding: 10px 20px !important; /* 屏幕左右留出呼吸感 */
+        box-sizing: border-box;
+        gap: 25px !important; /* 增加选项间距，滑动更舒服 */
+        -webkit-overflow-scrolling: touch; /* 苹果手机滑动丝滑加成 */
+    }
+    /* 隐藏丑陋的横向滚动条 */
+    .nav-links::-webkit-scrollbar {
+        display: none; 
+    }
+    .nav-links li {
+        flex-shrink: 0 !important; /* 保护文字不被硬生生挤扁 */
     }
     .nav-links li a {
-        font-size: 13px !important;
-        white-space: nowrap; /* 强制文字不换行 */
+        font-size: 14px !important; /* 字号可以稍微放大一点了 */
+        white-space: nowrap !important; /* 强制绝对不换行 */
     }
 
     /* ✍️ 3. 文字内容居中与大标题缩放 */
