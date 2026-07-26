@@ -932,20 +932,36 @@ body {
         white-space: nowrap !important; /* 强制绝对不换行 */
     }
 
-    /* ✍️ 3. 文字内容居中与大标题缩放 */
+  /* ✍️ 3. 文字内容居中与大标题缩放 */
     .hero-text {
         text-align: center !important;
         padding: 0 20px !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* 强制所有子元素居中 */
     }
     .hero-text h1 {
-        font-size: 3rem !important; /* 缩小大标题，避免占满屏幕 */
+        font-size: 3rem !important; 
         line-height: 1.1 !important;
+        text-align: center !important;
+        margin-bottom: 10px !important;
     }
+    
+    /* 🎯 重点修复：打字机副标题居中 */
+    .dynamic-subtitle {
+        display: flex !important;
+        justify-content: center !important; /* 核心：让子元素水平居中 */
+        align-items: center !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin: 0 auto 15px auto !important; /* 上下留间距，左右自动居中 */
+    }
+
     .intro-description {
         text-align: center !important;
+        margin: 0 auto 25px auto !important;
+        max-width: 90% !important;
     }
-    .dynamic-subtitle {
-        justify-content: center !important; /* 让打字机效果居中 */
     }
 
     /* 🔘 4. 按钮和社交图标：改横排为上下堆叠 */
